@@ -13,10 +13,10 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.categoryButton} onPress={() => navigateToSentences('breakfast')}>
+      <TouchableOpacity style={styles.categoryButton} onPress={() => navigateToSentences('breakfastMeals')}>
         <Text style={styles.categoryButtonText}>Breakfast</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryButton} onPress={() => navigateToSentences('lunch1')}>
+      <TouchableOpacity style={styles.categoryButton} onPress={() => navigateToSentences('lunchItems')}>
         <Text style={styles.categoryButtonText}>Lunch</Text>
       </TouchableOpacity>
       {/* Add more category buttons as needed */}

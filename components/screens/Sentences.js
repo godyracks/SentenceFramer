@@ -6,8 +6,13 @@ import Data from '../db/Data'; // Import your data file
 
 const Sentences = ({ route }) => {
   const { category } = route.params;
-  const categoryData = Data[category];
+ 
+  console.log('Received category in Sentences:', category);
+  //console.log('categoryData:', categoryData); // Log categoryData
+  console.log('Data object:', Data);
 
+  const categoryData = Data[category];
+  console.log('Category data:', categoryData);
   const renderCard = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => handleCardPress(item)}>
       <Image source={item.image} style={styles.cardImage} />
