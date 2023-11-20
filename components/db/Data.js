@@ -1,7 +1,7 @@
 // File: db/Data.js
 
 const Data = {
-    breakfastMeals: [
+    Breakfast: [
       {
         id: '1',
         title: 'Scrambled Eggs',
@@ -15,7 +15,7 @@ const Data = {
       // Add more breakfast meals as needed
     ],
   
-    lunchItems: [
+    Lunch: [
         {
             id: '1',
             title: 'Scrambled Eggs',

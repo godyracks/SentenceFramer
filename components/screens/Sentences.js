@@ -1,18 +1,14 @@
-// File: components/screens/Sentences.js
-
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import Data from '../db/Data'; // Import your data file
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Sentences = ({ route }) => {
   const { category } = route.params;
- 
-  console.log('Received category in Sentences:', category);
-  //console.log('categoryData:', categoryData); // Log categoryData
-  console.log('Data object:', Data);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const categoryData = Data[category];
-  console.log('Category data:', categoryData);
+
   const renderCard = ({ item }) => (
     <TouchableOpacity style={styles.card} onPress={() => handleCardPress(item)}>
       <Image source={item.image} style={styles.cardImage} />
@@ -21,8 +17,20 @@ const Sentences = ({ route }) => {
   );
 
   const handleCardPress = (item) => {
-    // Handle the logic when a card is pressed, e.g., navigate to a detailed view
-    console.log(`Pressed: ${item.title}`);
+     // Define an array of witty sentences
+  const wittySentences = [
+    `I love ${item.title}! Yummy!`,
+    `Feeling hungry for ${item.title}!`,
+    `Savoring the flavor of ${item.title}!`,
+    `Delicious ${item.title} coming right up!`,
+  ];
+    // Select a random sentence from the array
+  const randomSentence = wittySentences[Math.floor(Math.random() * wittySentences.length)];
+
+  // Set the selected item and the witty sentence
+  setSelectedItem({ ...item, sentence: randomSentence });
+ 
+  console.log(`Pressed: ${item.title}`);
   };
 
   return (
@@ -34,6 +42,13 @@ const Sentences = ({ route }) => {
         renderItem={renderCard}
         numColumns={2}
       />
+     {selectedItem && (
+  <View style={styles.sentenceContainer}>
+    <Text style={styles.sentenceText}>{selectedItem.sentence}</Text>
+    <TouchableOpacity><MaterialCommunityIcons name="heart" size={24} color="red" /></TouchableOpacity>
+  </View>
+)}
+
     </View>
   );
 };
@@ -42,11 +57,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: '#616C6F',
   },
   screenTitle: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 16,
+    color:'#fff'
   },
   card: {
     flex: 1,
@@ -65,6 +82,17 @@ const styles = StyleSheet.create({
     padding: 8,
     fontSize: 16,
     textAlign: 'center',
+  },
+  sentenceContainer: {
+    marginTop: 16,
+    padding: 8,
+    backgroundColor: '#eee',
+    borderRadius: 8,
+  },
+  sentenceText: {
+    fontSize: 32,
+    textAlign: 'center',
+    color: 'orange',
   },
 });
 

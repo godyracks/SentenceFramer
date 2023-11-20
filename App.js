@@ -8,7 +8,7 @@ import {
   OnboardingScreen,
   Sentences,
   LoadingScreen,
-  Profile,
+  Favorite,
   Home
 } from './components/screens';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -27,8 +27,8 @@ function BottomTabNavigator() {
             iconName = focused ? 'home-circle' : 'home-circle-outline';
           } else if (route.name === 'Sentences') {
             iconName = focused ? 'clipboard-text-multiple-outline' : 'clipboard-text-multiple-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'account-circle' : 'account-outline';
+          } else if (route.name === 'Favorite') {
+            iconName = focused ? 'heart' : 'heart';
           } 
 
           return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
@@ -43,7 +43,7 @@ function BottomTabNavigator() {
     >
       <Tab.Screen name="Home" component={Home} options={{ headerShown: false }} />
       <Tab.Screen name="Sentences" component={Sentences} options={{ headerShown: false }} />
-      <Tab.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+      <Tab.Screen name="Favorite" component={Favorite} options={{ headerShown: false }} />
 
     </Tab.Navigator>
   );
@@ -87,8 +87,8 @@ export default function App() {
             />
             <Stack.Screen
               options={{ headerShown: false }}
-              name="Profile"
-              component={Profile}
+              name="Favorite"
+              component={Favorite}
             />
           </>
         )}
